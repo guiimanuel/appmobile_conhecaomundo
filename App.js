@@ -2,12 +2,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import { countryScreen } from "./src/screens";
-import { favoriteScreen } from "./src/screens";
-import { homeScreen } from "./src/screens";
-import { loginScreen } from "./src/screens";
-import { profileScreen } from "./src/screens";
-import { registerScreen } from "./src/screens";
+import CountryScreen from "./src/screens/CountryScreen";
+import FavoriteScreen from "./src/screens/FavoriteScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import SignUpScreen from "./src/screens/SignUpScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,14 +28,11 @@ function App(){
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={loginScreen} />
-        <Stack.Screen name="Register" component={registerScreen} />
-        <Stack.Screen name="Home" component={homeScreen} />
-        <Stack.Screen name="Country" component={countryScreen} />
-        <Stack.Screen name="Favorite" component={favoriteScreen} />
-        <Stack.Screen name="Profile" component={profileScreen} />
+      <Stack.Navigator initialRouteName="SignUp">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+export default App;
