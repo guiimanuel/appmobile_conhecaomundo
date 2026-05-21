@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import useAppFonts from '../components/expoFonts';
 
 function LoginScreen({navigation}) {
+    const fontsLoaded = useAppFonts();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -34,20 +36,19 @@ function LoginScreen({navigation}) {
             justifyContent: 'center',
             padding: 20,
             borderRadius: 10,
-            backgroundColor: '#B7D9EC'
+            backgroundColor: '#EDF5FA'
         },
         initialImage: {
-            
+            flex: 1,
+            marginRight: 30,
         },
         initialTitle: {
             alignItems: 'center',
-            backgroundColor: 'red',
             width: 300
         },
         inputContainer: {
             width: 380,
             height: 200,
-            backgroundColor: 'yellow',
             marginTop: 20,
             justifyContent: 'center',
         },
@@ -61,14 +62,15 @@ function LoginScreen({navigation}) {
 
             {/* view image */}
             <View style={styles.initialImage}>
+                <Image source={require('../assets/images/earth.png')} style={{ width: 400, height: 450 }} />
                 {/* image source */}
             </View>
 
             {/* view title */}
             <View style={styles.initialTitle}>
-                <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'blue' }}>CONHEÇA</Text>
-                <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'blue' }}>O MUNDO</Text>
-                <Text style={{ fontSize: 26 }}>Explore. Descubra. Viaje.</Text>
+                <Text style={{ fontSize: 55, fontWeight: 'bold', color: '#0A2A66', fontFamily: 'BebasNeueRegular', letterSpacing: 5 }}>CONHEÇA</Text>
+                <Text style={{ fontSize: 55, fontWeight: 'bold', color: '#0A2A66', fontFamily: 'BebasNeueRegular', letterSpacing: 5 }}>O MUNDO</Text>
+                <Text style={{ fontSize: 24, color: '#5C6B7A', fontFamily: 'PoppinsMedium' }}>Explore. Descubra. Viaje.</Text>
             </View>
             
             {/* view input */}
@@ -87,7 +89,7 @@ function LoginScreen({navigation}) {
                             onChangeText={setEmail}
                             keyboardType='email-address'
                             autoCapitalize='none'
-                            style={{height: 75,borderRadius: 15,backgroundColor: 'white',fontSize: 20,paddingLeft: 60, paddingBottom:8,color: 'gray'}}
+                            style={{height: 75,borderRadius: 15,backgroundColor: 'white',fontSize: 20,paddingLeft: 60, paddingBottom:6,color: 'gray', fontFamily: 'PoppinsRegular', borderColor: '#DCE6F2', borderWidth: 1}}
                         />
                     </View>
                 
@@ -98,19 +100,19 @@ function LoginScreen({navigation}) {
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry
-                    style={{height: 75, borderRadius: 15, backgroundColor: 'white', fontSize: 20, paddingLeft: 60, paddingBottom:4, color: 'gray'}} 
+                    style={{height: 75, borderRadius: 15, backgroundColor: 'white', fontSize: 20, paddingLeft: 60, paddingBottom:3, color: 'gray', fontFamily: 'PoppinsRegular', borderColor: '#DCE6F2', borderWidth: 1}} 
                     />
                 </View>
                 
                 
             </View>
             <View style={styles.ButtonContainer}>
-                <TouchableOpacity onPress={handleLogin} style={{ backgroundColor: 'blue', height: 75, borderRadius: 15, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>   
-                    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>Entrar</Text>
+                <TouchableOpacity onPress={handleLogin} style={{ backgroundColor: '#1A73E8', height: 75, borderRadius: 15, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>   
+                    <Text style={{ color: 'white', fontSize: 24, fontFamily: 'PoppinsSemiBold' }}>Entrar</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style={{marginTop: 30}}><Text style={{fontSize: 18}}>Ainda nao tem uma conta?   <Text style={{color:'blue'}}>Cadastre-se</Text></Text></View>
+            <View style={{marginTop: 24}}><Text style={{fontSize: 20, fontFamily: 'PoppinsRegular'}}>Ainda não tem conta?   <Text style={{color:'#1A73E8', fontFamily: 'PoppinsSemiBold'}}>Cadastre-se</Text></Text></View>
         </View>
     )
     
