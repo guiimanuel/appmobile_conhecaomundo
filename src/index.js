@@ -2,6 +2,7 @@ import { registerRootComponent } from 'expo';
 
 import App from '../App';
 export { default as CountryScreen } from './screens/CountryScreen';
+export { default as ChangePhotoScreen } from './screens/ChangePhotoScreen';
 export { default as FavoriteScreen } from './screens/FavoriteScreen';
 export { default as HomeScreen } from './screens/HomeScreen';
 export { default as LoginScreen } from './screens/LoginScreen';
