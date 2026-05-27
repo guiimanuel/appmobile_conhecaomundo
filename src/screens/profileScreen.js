@@ -6,15 +6,76 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import BottomTabs from "../components/BottomTabs";
 import ScreenHeader from "../components/ScreenHeader";
 import useAppFonts from "../components/ExpoFonts";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { useState, useEffect } from "react";
+import favoriteService from "../utils/favoriteService";
 
 const profileImage =
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80";
 
 function ProfileScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [favoritesCount, setFavoritesCount] = useState(0);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setName(user.displayName || "");
+        setEmail(user.email || "");
+        console.log("User loaded:", {
+          name: user.displayName,
+          email: user.email,
+        });
+
+        const unsubscribeFavorites = favoriteService.onFavoritesChange(
+          (favorites) => {
+            setFavoritesCount(favorites.length);
+          }
+        );
+
+        return unsubscribeFavorites;
+      } else {
+        setName("");
+        setEmail("");
+        setFavoritesCount(0);
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      carregarQuantidadeFavoritos();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  async function carregarQuantidadeFavoritos() {
+    const resultado = await favoriteService.getFavorite();
+    if (resultado.success) {
+      setFavoritesCount(resultado.data.length);
+    }
+  }
 
   if (!fontsLoaded) {
     return <View style={styles.screen} />;
+  }
+
+  function handleLogout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log("User signed out successfully");
+        navigation.navigate("Login");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+        alert("Erro ao sair! Tente novamente.");
+      });
   }
 
   return (
@@ -38,38 +99,38 @@ function ProfileScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.name}>Joao da Silva</Text>
-        <Text style={styles.email}>joao@email.com</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.email}>{email}</Text>
 
         <View style={styles.stats}>
           <View style={styles.statBox}>
             <Text style={styles.statLabel}>Favoritos</Text>
-            <Text style={styles.statValue}>12</Text>
+            <Text style={styles.statValue}>{favoritesCount}</Text>
           </View>
           <View style={styles.statBox}>
-            <Text style={styles.statLabel}>Paises visitados</Text>
-            <Text style={styles.statValue}>5</Text>
+            <Text style={styles.statLabel}>Países visitados</Text>
+            <Text style={styles.statValue}>0</Text>
           </View>
           <View style={styles.statBox}>
             <Text style={styles.statLabel}>Resenhas</Text>
-            <Text style={styles.statValue}>8</Text>
+            <Text style={styles.statValue}>0</Text>
           </View>
         </View>
 
         <View style={styles.menu}>
-          <MenuRow icon="edit" label="Editar Perfil" />
+          <MenuRow icon="edit" label="Editar Perfil" onPress={() => navigation.navigate("ProfileEdit")} />
           <MenuRow
             icon="photo-camera"
             label="Alterar Foto"
             onPress={() => navigation.navigate("ChangePhoto")}
           />
-          <MenuRow icon="lock" label="Alterar Senha" />
+          <MenuRow icon="lock" label="Alterar Senha" onPress={() => navigation.navigate("PasswordEdit")} />
         </View>
 
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.logout}
-          onPress={() => navigation.navigate("Login")}
+          onPress={handleLogout}
         >
           <MaterialIcons name="logout" size={21} color="#FF2B2B" />
           <Text style={styles.logoutText}>Sair</Text>

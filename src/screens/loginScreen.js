@@ -20,6 +20,7 @@ function LoginScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleLogin() {
     const auth = getAuth();
@@ -89,16 +90,20 @@ function LoginScreen({ navigation }) {
             placeholder="Senha"
             value={password}
             onChangeText={setPassword}
-            secureTextEntry
+            secureTextEntry={!showPassword}
             placeholderTextColor="#6B7280"
             style={styles.input}
           />
-          <Ionicons
-            name="eye"
-            size={20}
-            color="#697386"
+          <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
             style={styles.eyeIcon}
-          />
+          >
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#697386"
+            />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -134,7 +139,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: "100%",
-    maxWidth: 310,
+    maxWidth: 360,
     height: 250,
     marginBottom: 8,
   },

@@ -8,6 +8,8 @@ export { default as HomeScreen } from './screens/HomeScreen';
 export { default as LoginScreen } from './screens/LoginScreen';
 export { default as ProfileScreen } from './screens/ProfileScreen';
 export { default as SignUpScreen } from './screens/SignUpScreen';
+export { default as ProfileEditScreen } from './screens/ProfileEditScreen';
+export { default as PasswordEditScreen } from './screens/PasswordEditScreen';
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately

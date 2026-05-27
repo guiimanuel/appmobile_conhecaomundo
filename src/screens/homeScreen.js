@@ -69,7 +69,10 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.screen}>
       <StatusBar style="light" />
-      <ScreenHeader title="Paises" rightIcon="notifications-outline" />
+      <ScreenHeader
+        title="Paises"
+        rightIcon="notifications-outline"
+      />
 
       <View style={styles.searchShell}>
         <Ionicons name="search" size={19} color="#64748B" />
@@ -173,6 +176,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#F7FAFF",
+    width: "100%",
   },
   searchShell: {
     marginTop: -2,
@@ -187,9 +191,11 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    color: "#111827",
     fontFamily: "PoppinsRegular",
     fontSize: 13,
+    height: 52,
+    borderRadius: 12,
+    backgroundColor: "#FFFFFF",
   },
   list: {
     padding: 14,

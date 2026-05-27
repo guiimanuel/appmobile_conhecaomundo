@@ -9,7 +9,11 @@ import {
   View,
 } from "react-native";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
@@ -28,8 +32,14 @@ function SignUpScreen({ navigation }) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        updateProfile(user, { displayName: name });
-        console.log("Sign-up successful:", user.uid, user.displayName);
+        console.log("Sign-up successful:", user.uid);
+        updateProfile(user, { displayName: name })
+          .then(() => {
+            console.log("User profile updated with name:", name);
+          })
+          .catch((error) => {
+            console.error("Failed to update user profile:", error.code, error.message);
+          });
         navigation.navigate("Home");
       })
       .catch((error) => {
@@ -38,7 +48,9 @@ function SignUpScreen({ navigation }) {
         alert(
           "Erro ao criar conta! Verifique suas informacoes e tente novamente.",
         );
-      });
+      }
+      
+  );
 
     if (password !== confirmPassword) {
       alert("As senhas precisam ser iguais.");

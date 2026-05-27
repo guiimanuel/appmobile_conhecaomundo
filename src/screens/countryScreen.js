@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import ScreenHeader from "../components/ScreenHeader";
 import useAppFonts from "../components/ExpoFonts";
+import { useState, useEffect } from "react";
+import favoriteService from "../utils/favoriteService";
 
 const detailRows = [
   { key: "capital", label: "Capital", icon: "location-sharp" },
@@ -27,6 +29,39 @@ const detailRows = [
 function CountryScreen({ navigation, route }) {
   const fontsLoaded = useAppFonts();
   const country = route.params?.country;
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (country) {
+      checkIfFavoriteAsync();
+    }
+  }, [country]);
+
+  async function checkIfFavoriteAsync() {
+    const result = await favoriteService.checkIfFavorite(country.id);
+    setIsFavorite(result);
+  }
+
+  async function handleToggleFavorite() {
+    setLoading(true);
+    let result;
+
+    if (isFavorite) {
+      result = await favoriteService.removeFavorite(country.id);
+    } else {
+      result = await favoriteService.addFavorite(country);
+    }
+
+    setLoading(false);
+
+    if (result.success) {
+      setIsFavorite(!isFavorite);
+      alert(result.message);
+    } else {
+      alert(result.message);
+    }
+  }
 
   if (!fontsLoaded) {
     return <View style={styles.screen} />;
@@ -92,10 +127,22 @@ function CountryScreen({ navigation, route }) {
             ))}
           </View>
 
-          <TouchableOpacity activeOpacity={0.85} style={styles.favoriteButton}>
-            <MaterialCommunityIcons name="heart" size={20} color="#FFFFFF" />
+          <TouchableOpacity
+            activeOpacity={0.85}
+            style={[
+              styles.favoriteButton,
+              isFavorite && styles.favoriteButtonActive,
+            ]}
+            onPress={handleToggleFavorite}
+            disabled={loading}
+          >
+            <MaterialCommunityIcons
+              name={isFavorite ? "heart" : "heart-outline"}
+              size={20}
+              color="#FFFFFF"
+            />
             <Text style={styles.favoriteButtonText}>
-              Adicionar aos Favoritos
+              {isFavorite ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
             </Text>
           </TouchableOpacity>
         </View>
@@ -173,6 +220,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     gap: 8,
+  },
+  favoriteButtonActive: {
+    backgroundColor: "#FF2B2B",
   },
   favoriteButtonText: {
     color: "#FFFFFF",
