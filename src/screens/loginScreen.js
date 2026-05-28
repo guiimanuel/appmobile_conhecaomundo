@@ -1,120 +1,219 @@
-import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import * as React from "react";
+import { StatusBar } from "expo-status-bar";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Fontisto from '@expo/vector-icons/Fontisto';
-import useAppFonts from '../components/expoFonts';
+import Ionicons from "@expo/vector-icons/Ionicons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Fontisto from "@expo/vector-icons/Fontisto";
+import useAppFonts from "../components/ExpoFonts";
 
-function LoginScreen({navigation}) {
-    const fontsLoaded = useAppFonts();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+function LoginScreen({ navigation }) {
+  const fontsLoaded = useAppFonts();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-    function handleLogin() {
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-            const user = userCredential.user;
-            console.log('Login successful:', user);
-            navigation.navigate('Home');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error('Login failed:', errorCode, errorMessage);
-                alert('Erro ao fazer login! Verifique suas credenciais e tente novamente.');
-            });
-    }
+  function handleLogin() {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("Login successful:", userCredential.user);
+        navigation.navigate("Home");
+      })
+      .catch((error) => {
+        console.error("Login failed:", error.code, error.message);
+        alert(
+          "Erro ao fazer login! Verifique suas credenciais e tente novamente.",
+        );
+      });
+  }
 
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 20,
-            borderRadius: 10,
-            backgroundColor: '#EDF5FA'
-        },
-        initialImage: {
-            flex: 1,
-            marginRight: 30,
-        },
-        initialTitle: {
-            alignItems: 'center',
-            width: 300
-        },
-        inputContainer: {
-            width: 380,
-            height: 200,
-            marginTop: 20,
-            justifyContent: 'center',
-        },
-        ButtonContainer: {
-            width: 380
-        }
-    });
-    return(
-        <View style={styles.container}>
-            <StatusBar style='auto'/>
+  if (!fontsLoaded) {
+    return <View style={styles.container} />;
+  }
 
-            {/* view image */}
-            <View style={styles.initialImage}>
-                <Image source={require('../assets/images/earth.png')} style={{ width: 400, height: 450 }} />
-                {/* image source */}
-            </View>
+  return (
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      contentContainerStyle={styles.container}
+    >
+      <StatusBar style="dark" />
 
-            {/* view title */}
-            <View style={styles.initialTitle}>
-                <Text style={{ fontSize: 55, fontWeight: 'bold', color: '#0A2A66', fontFamily: 'BebasNeueRegular', letterSpacing: 5 }}>CONHEÇA</Text>
-                <Text style={{ fontSize: 55, fontWeight: 'bold', color: '#0A2A66', fontFamily: 'BebasNeueRegular', letterSpacing: 5 }}>O MUNDO</Text>
-                <Text style={{ fontSize: 24, color: '#5C6B7A', fontFamily: 'PoppinsMedium' }}>Explore. Descubra. Viaje.</Text>
-            </View>
-            
-            {/* view input */}
-            <View style={styles.inputContainer}>
+      <Image
+        source={require("../assets/images/earth.png")}
+        style={styles.heroImage}
+        resizeMode="contain"
+      />
 
-                    <View style={{ position: 'relative' }}>
-                        <MaterialIcons
-                            name="email"
-                            size={28}
-                            color="gray"
-                            style={{ position: 'absolute', left: 15, top: 21 }}
-                        />
-                        <TextInput
-                            placeholder='E-mail'
-                            value={email}
-                            onChangeText={setEmail}
-                            keyboardType='email-address'
-                            autoCapitalize='none'
-                            style={{height: 75,borderRadius: 15,backgroundColor: 'white',fontSize: 20,paddingLeft: 60, paddingBottom:6,color: 'gray', fontFamily: 'PoppinsRegular', borderColor: '#DCE6F2', borderWidth: 1}}
-                        />
-                    </View>
-                
-                <View style={{ marginTop: 35, position: 'relative' }}>
-                    <Fontisto name="locked" size={26} color="gray" style={{position:'absolute', left: 15, top: 21}} />
-                    <TextInput
-                    placeholder='Senha'
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                    style={{height: 75, borderRadius: 15, backgroundColor: 'white', fontSize: 20, paddingLeft: 60, paddingBottom:3, color: 'gray', fontFamily: 'PoppinsRegular', borderColor: '#DCE6F2', borderWidth: 1}} 
-                    />
-                </View>
-                
-                
-            </View>
-            <View style={styles.ButtonContainer}>
-                <TouchableOpacity onPress={handleLogin} style={{ backgroundColor: '#1A73E8', height: 75, borderRadius: 15, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>   
-                    <Text style={{ color: 'white', fontSize: 24, fontFamily: 'PoppinsSemiBold' }}>Entrar</Text>
-                </TouchableOpacity>
-            </View>
+      <View style={styles.titleBlock}>
+        <Text style={styles.title}>CONHECA</Text>
+        <Text style={styles.title}>O MUNDO</Text>
+        <Text style={styles.subtitle}>Explore. Descubra. Viaje.</Text>
+      </View>
 
-            <View style={{marginTop: 24}}><Text style={{fontSize: 20, fontFamily: 'PoppinsRegular'}}>Ainda não tem conta?   <Text style={{color:'#1A73E8', fontFamily: 'PoppinsSemiBold'}}>Cadastre-se</Text></Text></View>
+      <View style={styles.form}>
+        <View style={styles.inputWrap}>
+          <MaterialIcons
+            name="email"
+            size={20}
+            color="#697386"
+            style={styles.inputIcon}
+          />
+          <TextInput
+            placeholder="E-mail"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            placeholderTextColor="#6B7280"
+            style={styles.input}
+          />
         </View>
-    )
-    
+
+        <View style={styles.inputWrap}>
+          <Fontisto
+            name="locked"
+            size={18}
+            color="#697386"
+            style={styles.inputIcon}
+          />
+          <TextInput
+            placeholder="Senha"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!showPassword}
+            placeholderTextColor="#6B7280"
+            style={styles.input}
+          />
+          <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
+            style={styles.eyeIcon}
+          >
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#697386"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <TouchableOpacity
+        onPress={handleLogin}
+        style={styles.primaryButton}
+        activeOpacity={0.85}
+      >
+        <Text style={styles.primaryButtonText}>Entrar</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.footerText}>
+        Ainda nao tem conta?{" "}
+        <Text
+          onPress={() => navigation.navigate("SignUp")}
+          style={styles.footerLink}
+        >
+          Cadastre-se
+        </Text>
+      </Text>
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 28,
+    paddingVertical: 38,
+    backgroundColor: "#EDF8FF",
+  },
+  heroImage: {
+    width: "100%",
+    maxWidth: 360,
+    height: 250,
+    marginBottom: 8,
+  },
+  titleBlock: {
+    alignItems: "center",
+    marginBottom: 28,
+  },
+  title: {
+    color: "#09275B",
+    fontFamily: "BebasNeueRegular",
+    fontSize: 43,
+    lineHeight: 43,
+  },
+  subtitle: {
+    color: "#1F2937",
+    fontFamily: "PoppinsMedium",
+    fontSize: 15,
+    marginTop: 6,
+  },
+  form: {
+    width: "100%",
+    gap: 14,
+  },
+  inputWrap: {
+    position: "relative",
+    width: "100%",
+  },
+  inputIcon: {
+    position: "absolute",
+    left: 16,
+    top: 18,
+    zIndex: 1,
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 16,
+    top: 18,
+  },
+  input: {
+    height: 58,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#DCE6F2",
+    backgroundColor: "#FFFFFF",
+    paddingLeft: 48,
+    paddingRight: 44,
+    color: "#111827",
+    fontFamily: "PoppinsRegular",
+    fontSize: 14,
+  },
+  primaryButton: {
+    width: "100%",
+    height: 58,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#075FDE",
+    marginTop: 20,
+  },
+  primaryButtonText: {
+    color: "#FFFFFF",
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 16,
+  },
+  footerText: {
+    color: "#111827",
+    fontFamily: "PoppinsRegular",
+    fontSize: 13,
+    marginTop: 24,
+  },
+  footerLink: {
+    color: "#075FDE",
+    fontFamily: "PoppinsSemiBold",
+  },
+});
+
 export default LoginScreen;
