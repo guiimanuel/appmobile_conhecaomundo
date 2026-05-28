@@ -26,6 +26,8 @@ function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function handleSignUp() {
     const auth = getAuth();
@@ -38,8 +40,13 @@ function SignUpScreen({ navigation }) {
             console.log("User profile updated with name:", name);
           })
           .catch((error) => {
-            console.error("Failed to update user profile:", error.code, error.message);
+            console.error(
+              "Failed to update user profile:",
+              error.code,
+              error.message,
+            );
           });
+        alert("Usuario criado com sucesso!");
         navigation.navigate("Home");
       })
       .catch((error) => {
@@ -48,9 +55,7 @@ function SignUpScreen({ navigation }) {
         alert(
           "Erro ao criar conta! Verifique suas informacoes e tente novamente.",
         );
-      }
-      
-  );
+      });
 
     if (password !== confirmPassword) {
       alert("As senhas precisam ser iguais.");
@@ -127,16 +132,21 @@ function SignUpScreen({ navigation }) {
             placeholder="Senha"
             value={password}
             onChangeText={setPassword}
-            secureTextEntry
+            secureTextEntry={!showPassword}
             placeholderTextColor="#6B7280"
             style={styles.input}
           />
-          <Ionicons
-            name="eye"
-            size={20}
-            color="#697386"
+          <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
             style={styles.eyeIcon}
-          />
+          >
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#697386"
+              style={styles.eyeIcon}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.inputWrap}>
@@ -150,16 +160,21 @@ function SignUpScreen({ navigation }) {
             placeholder="Confirmar senha"
             value={confirmPassword}
             onChangeText={setConfirmPassword}
-            secureTextEntry
+            secureTextEntry={!showConfirmPassword}
             placeholderTextColor="#6B7280"
             style={styles.input}
           />
-          <Ionicons
-            name="eye"
-            size={20}
-            color="#697386"
+          <TouchableOpacity
+            onPress={() => setShowConfirmPassword(!showConfirmPassword)}
             style={styles.eyeIcon}
-          />
+          >
+            <Ionicons
+              name={showConfirmPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#697386"
+              style={styles.eyeIcon}
+            />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -227,8 +242,8 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: 16,
-    top: 18,
+    right: 10,
+    top: 9,
   },
   input: {
     height: 58,
