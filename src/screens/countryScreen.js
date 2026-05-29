@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import screenHeader from "../components/screenHeader";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 import { useState, useEffect } from "react";
 import favoriteService from "../utils/favoriteService";
 
@@ -27,7 +27,7 @@ const detailRows = [
 ];
 
 function countryScreen({ navigation, route }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const country = route.params?.country;
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(false);

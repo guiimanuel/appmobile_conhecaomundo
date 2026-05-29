@@ -14,10 +14,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 
 function loginScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

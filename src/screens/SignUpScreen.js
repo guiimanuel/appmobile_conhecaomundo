@@ -18,10 +18,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 
 function signUpScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

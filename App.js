@@ -56,7 +56,7 @@ if (Platform.OS === "web" || !getReactNativePersistence) {
   }
 }
 
-function App() {
+function app() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="login">
@@ -110,4 +110,4 @@ function App() {
   );
 }
 
-export default App;
+export default app;

@@ -13,11 +13,11 @@ import { useState, useEffect } from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 import ScreenHeader from "../components/screenHeader";
 
 function profileEditScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);

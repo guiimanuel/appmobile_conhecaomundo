@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 
-export function useAppFonts() {
+export function useExpoFonts() {
     const [fontsLoaded] = useFonts({
         'BebasNeueRegular': require('../assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf'),
         'PoppinsRegular': require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
@@ -10,4 +10,4 @@ export function useAppFonts() {
     });
     return fontsLoaded;
 }
-export default useAppFonts;
+export default useExpoFonts;
