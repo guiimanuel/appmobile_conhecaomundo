@@ -5,7 +5,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import BottomTabs from "../components/bottomTabs";
 import ScreenHeader from "../components/screenHeader";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 import favoriteService from "../utils/favoriteService";
@@ -14,7 +14,7 @@ const profileImage =
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80";
 
 function ProfileScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [favoritesCount, setFavoritesCount] = useState(0);

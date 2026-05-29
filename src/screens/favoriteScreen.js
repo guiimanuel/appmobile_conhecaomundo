@@ -12,13 +12,13 @@ import {
 } from "react-native";
 import bottomTabs from "../components/bottomTabs";
 import screenHeader from "../components/screenHeader";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 import favoriteService from "../utils/favoriteService";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function favoriteScreen({ navigation, useFocusEffect }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [favorite, setFavorite] = useState([]);
   const [loading, setLoading] = useState(false);
 

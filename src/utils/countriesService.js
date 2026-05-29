@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const countriesAPI = axios.create({
+const countriesService = axios.create({
     baseURL: 'https://restcountries.com/v3.1/'
 });
 
-export default countriesAPI;
+export default countriesService;

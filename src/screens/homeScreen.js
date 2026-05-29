@@ -11,13 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import countriesAPI from "../api/countriesAPI";
+import countriesService from "../utils/countriesService";
 import bottomTabs from "../components/bottomTabs";
 import screenHeader from "../components/screenHeader";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 import { useEffect, useState } from "react";
 function homeScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -28,7 +28,7 @@ function homeScreen({ navigation }) {
 
     async function loadCountries() {
       try {
-        const response = await countriesAPI.get(
+        const response = await countriesService.get(
           "all?fields=name,capital,flags,population,languages,currencies,region,subregion,continents,timezones",
         );
 

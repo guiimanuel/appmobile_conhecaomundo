@@ -3,13 +3,13 @@ import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import screenHeader from "../components/screenHeader";
-import useAppFonts from "../components/expoFonts";
+import useExpoFonts from "../components/expoFonts";
 
 const profileImage =
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80";
 
 function changePhotoScreen({ navigation }) {
-  const fontsLoaded = useAppFonts();
+  const fontsLoaded = useExpoFonts();
 
   if (!fontsLoaded) {
     return <View style={styles.screen} />;
