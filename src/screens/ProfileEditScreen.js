@@ -13,10 +13,10 @@ import { useState, useEffect } from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import useAppFonts from "../components/ExpoFonts";
-import ScreenHeader from "../components/ScreenHeader";
+import useAppFonts from "../components/expoFonts";
+import ScreenHeader from "../components/screenHeader";
 
-function ProfileEditScreen({ navigation }) {
+function profileEditScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,9 +50,9 @@ function ProfileEditScreen({ navigation }) {
     if (user) {
       updateProfile(user, { displayName: name.trim() })
         .then(() => {
-            console.log("Perfil atualizado com sucesso");
-            alert("Perfil atualizado com sucesso!");
-            navigation.navigate("Profile");
+          console.log("Perfil atualizado com sucesso");
+          alert("Perfil atualizado com sucesso!");
+          navigation.navigate("profile");
         })
         .catch((error) => {
           console.error("Erro ao atualizar perfil:", error);
@@ -259,4 +259,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileEditScreen;
+export default profileEditScreen;

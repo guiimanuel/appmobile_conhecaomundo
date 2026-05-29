@@ -10,14 +10,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import BottomTabs from "../components/BottomTabs";
-import ScreenHeader from "../components/ScreenHeader";
-import useAppFonts from "../components/ExpoFonts";
+import bottomTabs from "../components/bottomTabs";
+import screenHeader from "../components/screenHeader";
+import useAppFonts from "../components/expoFonts";
 import favoriteService from "../utils/favoriteService";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-function FavoriteScreen({ navigation, useFocusEffect }) {
+function favoriteScreen({ navigation, useFocusEffect }) {
   const fontsLoaded = useAppFonts();
   const [favorite, setFavorite] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,11 @@ function FavoriteScreen({ navigation, useFocusEffect }) {
   return (
     <View style={styles.screen}>
       <StatusBar style="light" />
-      <ScreenHeader title="Meus Favoritos" />
+      {screenHeader({
+        title: "Meus Favoritos",
+        leftIcon: "arrow-back",
+        onLeftPress: () => navigation.goBack()
+      })}
 
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -89,7 +93,7 @@ function FavoriteScreen({ navigation, useFocusEffect }) {
             <TouchableOpacity
               key={country.id}
               activeOpacity={0.78}
-              onPress={() => navigation.navigate("Country", { country })}
+              onPress={() => navigation.navigate("country", { country })}
               style={styles.countryCard}
             >
               <Image
@@ -109,7 +113,10 @@ function FavoriteScreen({ navigation, useFocusEffect }) {
         )}
       </ScrollView>
 
-      <BottomTabs active="Favorite" navigation={navigation} />
+      {bottomTabs({
+        active: "favorite",
+        navigation: navigation
+      })}
     </View>
   );
 }
@@ -190,4 +197,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FavoriteScreen;
+export default favoriteScreen;

@@ -1,15 +1,15 @@
 import { registerRootComponent } from 'expo';
 
-import App from '../App';
-export { default as CountryScreen } from './screens/CountryScreen';
-export { default as ChangePhotoScreen } from './screens/ChangePhotoScreen';
-export { default as FavoriteScreen } from './screens/FavoriteScreen';
-export { default as HomeScreen } from './screens/HomeScreen';
-export { default as LoginScreen } from './screens/LoginScreen';
-export { default as ProfileScreen } from './screens/ProfileScreen';
-export { default as SignUpScreen } from './screens/SignUpScreen';
-export { default as ProfileEditScreen } from './screens/ProfileEditScreen';
-export { default as PasswordEditScreen } from './screens/PasswordEditScreen';
+import App from '../app';
+export { default as countryScreen } from './screens/countryScreen';
+export { default as changePhotoScreen } from './screens/changePhotoScreen';
+export { default as favoriteScreen } from './screens/favoriteScreen';
+export { default as homeScreen } from './screens/homeScreen';
+export { default as loginScreen } from './screens/loginScreen';
+export { default as profileScreen } from './screens/profileScreen';
+export { default as signUpScreen } from './screens/signUpScreen';
+export { default as profileEditScreen } from './screens/profileEditScreen';
+export { default as passwordEditScreen } from './screens/passwordEditScreen';
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately

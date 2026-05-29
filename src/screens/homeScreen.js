@@ -11,24 +11,24 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import APICountries from "../api/APICountries";
-import BottomTabs from "../components/BottomTabs";
-import ScreenHeader from "../components/ScreenHeader";
-import useAppFonts from "../components/ExpoFonts";
-
-function HomeScreen({ navigation }) {
+import countriesAPI from "../api/countriesAPI";
+import bottomTabs from "../components/bottomTabs";
+import screenHeader from "../components/screenHeader";
+import useAppFonts from "../components/expoFonts";
+import { useEffect, useState } from "react";
+function homeScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
-  const [countries, setCountries] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState("");
-  const [search, setSearch] = React.useState("");
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     let isMounted = true;
 
     async function loadCountries() {
       try {
-        const response = await APICountries.get(
+        const response = await countriesAPI.get(
           "all?fields=name,capital,flags,population,languages,currencies,region,subregion,continents,timezones",
         );
 
@@ -69,10 +69,10 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.screen}>
       <StatusBar style="light" />
-      <ScreenHeader
-        title="Paises"
-        rightIcon="notifications-outline"
-      />
+      {screenHeader({
+        title: "Paises",
+        rightIcon: "notifications-outline"
+      })}
 
       <View style={styles.searchShell}>
         <Ionicons name="search" size={19} color="#64748B" />
@@ -121,7 +121,7 @@ function HomeScreen({ navigation }) {
               <TouchableOpacity
                 key={country.id}
                 activeOpacity={0.78}
-                onPress={() => navigation.navigate("Country", { country })}
+                onPress={() => navigation.navigate("country", { country })}
                 style={styles.countryCard}
               >
                 <Image
@@ -141,7 +141,10 @@ function HomeScreen({ navigation }) {
           : null}
       </ScrollView>
 
-      <BottomTabs active="Home" navigation={navigation} />
+      {bottomTabs({
+        active: "home",
+        navigation: navigation
+      })}
     </View>
   );
 }
@@ -247,4 +250,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default homeScreen;

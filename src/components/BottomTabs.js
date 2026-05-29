@@ -2,12 +2,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 const tabs = [
-  { route: 'Home', label: 'Inicio', icon: 'home-outline', activeIcon: 'home' },
-  { route: 'Favorite', label: 'Favoritos', icon: 'heart-outline', activeIcon: 'heart' },
-  { route: 'Profile', label: 'Perfil', icon: 'person-outline', activeIcon: 'person' },
+  { route: 'home', label: 'Inicio', icon: 'home-outline', activeIcon: 'home' },
+  { route: 'favorite', label: 'Favoritos', icon: 'heart-outline', activeIcon: 'heart' },
+  { route: 'profile', label: 'Perfil', icon: 'person-outline', activeIcon: 'person' },
 ];
 
-function BottomTabs({ active, navigation }) {
+function bottomTabs({ active, navigation }) {
   return (
     <View
       style={{
@@ -44,4 +44,4 @@ function BottomTabs({ active, navigation }) {
   );
 }
 
-export default BottomTabs;
+export default bottomTabs;

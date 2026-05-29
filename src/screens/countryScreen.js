@@ -10,8 +10,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ScreenHeader from "../components/ScreenHeader";
-import useAppFonts from "../components/ExpoFonts";
+import screenHeader from "../components/screenHeader";
+import useAppFonts from "../components/expoFonts";
 import { useState, useEffect } from "react";
 import favoriteService from "../utils/favoriteService";
 
@@ -26,7 +26,7 @@ const detailRows = [
   { key: "timezone", label: "Fuso horario", icon: "time" },
 ];
 
-function CountryScreen({ navigation, route }) {
+function countryScreen({ navigation, route }) {
   const fontsLoaded = useAppFonts();
   const country = route.params?.country;
   const [isFavorite, setIsFavorite] = useState(false);
@@ -71,11 +71,11 @@ function CountryScreen({ navigation, route }) {
     return (
       <View style={styles.screen}>
         <StatusBar style="light" />
-        <ScreenHeader
-          title="Detalhes do Pais"
-          leftIcon="arrow-back"
-          onLeftPress={() => navigation.goBack()}
-        />
+        {screenHeader({
+          title: "Detalhes do Pais",
+          leftIcon: "arrow-back",
+          onLeftPress: () => navigation.goBack()
+        })}
         <View style={styles.emptyState}>
           <Ionicons name="alert-circle-outline" size={30} color="#6B7280" />
           <Text selectable style={styles.emptyText}>
@@ -89,12 +89,12 @@ function CountryScreen({ navigation, route }) {
   return (
     <View style={styles.screen}>
       <StatusBar style="light" />
-      <ScreenHeader
-        title="Detalhes do Pais"
-        leftIcon="arrow-back"
-        rightIcon="heart-outline"
-        onLeftPress={() => navigation.goBack()}
-      />
+      {screenHeader({
+        title: "Detalhes do Pais",
+        leftIcon: "arrow-back",
+        rightIcon: "heart-outline",
+        onLeftPress: () => navigation.goBack()
+      })}
 
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -244,4 +244,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CountryScreen;
+export default countryScreen;

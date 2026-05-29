@@ -18,7 +18,7 @@ import { useState } from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import useAppFonts from "../components/ExpoFonts";
+import useAppFonts from "../components/expoFonts";
 
 async function EditPassword(currentPassword, newPassword) {
   try {
