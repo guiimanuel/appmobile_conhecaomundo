@@ -1,844 +1,203 @@
-<div id="top">
-
-<!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="readmeai/assets/logos/purple.svg" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+# 🌍 Conheça o Mundo
 
-# APPMOBILE_CONHECAOMUNDO
+**Aplicativo mobile para explorar países do mundo inteiro**
 
-<em></em>
-
-<!-- BADGES -->
-<img src="https://img.shields.io/github/license/guiimanuel/appmobile_conhecaomundo?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-<img src="https://img.shields.io/github/last-commit/guiimanuel/appmobile_conhecaomundo?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-<img src="https://img.shields.io/github/languages/top/guiimanuel/appmobile_conhecaomundo?style=default&color=0080ff" alt="repo-top-language">
-<img src="https://img.shields.io/github/languages/count/guiimanuel/appmobile_conhecaomundo?style=default&color=0080ff" alt="repo-language-count">
-
-<!-- default option, no dependency badges. -->
-
-
-<!-- default option, no dependency badges. -->
+[![React Native](https://img.shields.io/badge/React%20Native-0.83.6-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-55.0.25-000020?style=flat-square&logo=expo&logoColor=white)](https://expo.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-12.x-FFCA28?style=flat-square&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License](https://img.shields.io/github/license/guiimanuel/appmobile_conhecaomundo?style=flat-square&color=0080ff)](./LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/guiimanuel/appmobile_conhecaomundo?style=flat-square&color=0080ff)](https://github.com/guiimanuel/appmobile_conhecaomundo/commits/main)
 
 </div>
-<br>
 
 ---
 
-## Table of Contents
+## 📖 Visão Geral
 
-- [Table of Contents](#table-of-contents)
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-    - [Project Index](#project-index)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+**Conheça o Mundo** é um aplicativo mobile multiplataforma desenvolvido com **React Native + Expo** que permite aos usuários explorar informações detalhadas sobre países de todo o globo. Com uma interface intuitiva, é possível pesquisar países, salvar favoritos e gerenciar um perfil personalizado — tudo com autenticação segura via Firebase.
+
+### Por que este projeto?
+
+- Centraliza informações geográficas e culturais de países em um só lugar
+- Oferece uma experiência de descoberta fluida com navegação por abas
+- Permite personalização através de perfil de usuário com foto e dados editáveis
+- Funciona tanto em Android quanto em iOS a partir de uma única base de código
 
 ---
 
-## Overview
+## ✨ Funcionalidades
 
-
+- 🔐 **Autenticação completa** — login, cadastro e recuperação de senha via Firebase
+- 🏠 **Home Screen** — listagem e pesquisa de países em tempo real via API
+- 🗺️ **Detalhes de País** — informações detalhadas como capital, bandeira, população e região
+- ⭐ **Favoritos** — salve e gerencie seus países preferidos com persistência local
+- 👤 **Perfil de Usuário** — visualize e edite nome, foto e senha da conta
+- 📸 **Troca de Foto** — atualize a foto de perfil diretamente pelo app
+- 🎨 **Design consistente** — sistema de cores e fontes customizadas via Expo Font
+- 📱 **Navegação por abas** — Bottom Tabs com ícones da biblioteca `@expo/vector-icons`
 
 ---
 
-## Features
+## 🛠️ Tecnologias
 
-<code>❯ REPLACE-ME</code>
+| Categoria | Tecnologia |
+|-----------|-----------|
+| Framework Mobile | React Native 0.83.6 |
+| Plataforma | Expo ~55.0.25 |
+| Linguagem | JavaScript (ES2023) |
+| Autenticação & Backend | Firebase 12.x |
+| Navegação | React Navigation 7.x (Native Stack + Bottom Tabs) |
+| HTTP Client | Axios 1.x |
+| Armazenamento Local | AsyncStorage 2.2.0 |
+| Ícones | @expo/vector-icons 15.x |
+| Fontes | expo-font |
+| Build Tool | EAS CLI |
 
 ---
 
-## Project Structure
+## 📁 Estrutura do Projeto
 
-```sh
-└── appmobile_conhecaomundo/
-    ├── AGENTS.md
-    ├── android
-    │   ├── .gitignore
-    │   ├── app
-    │   ├── build.gradle
-    │   ├── gradle
-    │   ├── gradle.properties
-    │   ├── gradlew
-    │   ├── gradlew.bat
-    │   └── settings.gradle
-    ├── App.js
-    ├── app.json
-    ├── CLAUDE.md
-    ├── ios
-    │   ├── .gitignore
-    │   ├── .xcode.env
-    │   ├── conhecaomundo
-    │   ├── conhecaomundo.xcodeproj
-    │   ├── Podfile
-    │   └── Podfile.properties.json
-    ├── metro.config.js
-    ├── package-lock.json
-    ├── package.json
-    ├── README.md
-    └── src
-        ├── assets
-        ├── components
-        ├── index.js
-        ├── screens
-        └── utils
+```
+appmobile_conhecaomundo/
+├── App.js                      # Entrada principal do app
+├── app.json                    # Configurações do Expo
+├── metro.config.js             # Configuração do bundler Metro
+├── package.json
+│
+├── src/
+│   ├── index.js                # Registro do app
+│   ├── assets/                 # Imagens, ícones e recursos estáticos
+│   │
+│   ├── components/             # Componentes reutilizáveis
+│   │   ├── BottomTabs.js       # Navegação por abas inferior
+│   │   ├── ScreenHeader.js     # Header padrão de telas
+│   │   ├── colors.js           # Paleta de cores do design system
+│   │   └── expoFonts.js        # Carregamento de fontes customizadas
+│   │
+│   ├── screens/                # Telas do aplicativo
+│   │   ├── homeScreen.js       # Listagem e busca de países
+│   │   ├── countryScreen.js    # Detalhes de um país
+│   │   ├── favoriteScreen.js   # Lista de países favoritos
+│   │   ├── loginScreen.js      # Tela de login
+│   │   ├── SignUpScreen.js     # Tela de cadastro
+│   │   ├── profileScreen.js    # Perfil do usuário
+│   │   ├── ProfileEditScreen.js # Edição de dados do perfil
+│   │   ├── PasswordEditScreen.js # Troca de senha
+│   │   └── ChangePhotoScreen.js  # Troca de foto de perfil
+│   │
+│   └── utils/                  # Serviços e utilitários
+│       ├── countriesService.js # Integração com API de países
+│       └── favoriteService.js  # Gerenciamento de favoritos (AsyncStorage)
+│
+├── android/                    # Configurações nativas Android
+└── ios/                        # Configurações nativas iOS
 ```
 
-### Project Index
-
-<details open>
-	<summary><b><code>APPMOBILE_CONHECAOMUNDO/</code></b></summary>
-	<!-- __root__ Submodule -->
-	<details>
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ __root__</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/App.js'>App.js</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/app.json'>app.json</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/metro.config.js'>metro.config.js</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/package-lock.json'>package-lock.json</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/package.json'>package.json</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-		</blockquote>
-	</details>
-	<!-- android Submodule -->
-	<details>
-		<summary><b>android</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ android</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\build.gradle'>build.gradle</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\gradlew.bat'>gradlew.bat</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\settings.gradle'>settings.gradle</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-			<!-- app Submodule -->
-			<details>
-				<summary><b>app</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ android.app</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\build.gradle'>build.gradle</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\debug.keystore'>debug.keystore</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\proguard-rules.pro'>proguard-rules.pro</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-					<!-- src Submodule -->
-					<details>
-						<summary><b>src</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ android.app.src</b></code>
-							<!-- debug Submodule -->
-							<details>
-								<summary><b>debug</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ android.app.src.debug</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\debug\AndroidManifest.xml'>AndroidManifest.xml</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-								</blockquote>
-							</details>
-							<!-- debugOptimized Submodule -->
-							<details>
-								<summary><b>debugOptimized</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ android.app.src.debugOptimized</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\debugOptimized\AndroidManifest.xml'>AndroidManifest.xml</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-								</blockquote>
-							</details>
-							<!-- main Submodule -->
-							<details>
-								<summary><b>main</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ android.app.src.main</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\AndroidManifest.xml'>AndroidManifest.xml</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-									<!-- java Submodule -->
-									<details>
-										<summary><b>java</b></summary>
-										<blockquote>
-											<div class='directory-path' style='padding: 8px 0; color: #666;'>
-												<code><b>⦿ android.app.src.main.java</b></code>
-											<!-- com Submodule -->
-											<details>
-												<summary><b>com</b></summary>
-												<blockquote>
-													<div class='directory-path' style='padding: 8px 0; color: #666;'>
-														<code><b>⦿ android.app.src.main.java.com</b></code>
-													<!-- conhecaomundo Submodule -->
-													<details>
-														<summary><b>conhecaomundo</b></summary>
-														<blockquote>
-															<div class='directory-path' style='padding: 8px 0; color: #666;'>
-																<code><b>⦿ android.app.src.main.java.com.conhecaomundo</b></code>
-															<table style='width: 100%; border-collapse: collapse;'>
-															<thead>
-																<tr style='background-color: #f8f9fa;'>
-																	<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-																	<th style='text-align: left; padding: 8px;'>Summary</th>
-																</tr>
-															</thead>
-																<tr style='border-bottom: 1px solid #eee;'>
-																	<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\java\com\conhecaomundo\MainActivity.kt'>MainActivity.kt</a></b></td>
-																	<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-																</tr>
-																<tr style='border-bottom: 1px solid #eee;'>
-																	<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\java\com\conhecaomundo\MainApplication.kt'>MainApplication.kt</a></b></td>
-																	<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-																</tr>
-															</table>
-														</blockquote>
-													</details>
-												</blockquote>
-											</details>
-										</blockquote>
-									</details>
-									<!-- res Submodule -->
-									<details>
-										<summary><b>res</b></summary>
-										<blockquote>
-											<div class='directory-path' style='padding: 8px 0; color: #666;'>
-												<code><b>⦿ android.app.src.main.res</b></code>
-											<!-- drawable Submodule -->
-											<details>
-												<summary><b>drawable</b></summary>
-												<blockquote>
-													<div class='directory-path' style='padding: 8px 0; color: #666;'>
-														<code><b>⦿ android.app.src.main.res.drawable</b></code>
-													<table style='width: 100%; border-collapse: collapse;'>
-													<thead>
-														<tr style='background-color: #f8f9fa;'>
-															<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-															<th style='text-align: left; padding: 8px;'>Summary</th>
-														</tr>
-													</thead>
-														<tr style='border-bottom: 1px solid #eee;'>
-															<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\res\drawable\ic_launcher_background.xml'>ic_launcher_background.xml</a></b></td>
-															<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-														</tr>
-														<tr style='border-bottom: 1px solid #eee;'>
-															<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\res\drawable\rn_edit_text_material.xml'>rn_edit_text_material.xml</a></b></td>
-															<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-														</tr>
-													</table>
-												</blockquote>
-											</details>
-											<!-- values Submodule -->
-											<details>
-												<summary><b>values</b></summary>
-												<blockquote>
-													<div class='directory-path' style='padding: 8px 0; color: #666;'>
-														<code><b>⦿ android.app.src.main.res.values</b></code>
-													<table style='width: 100%; border-collapse: collapse;'>
-													<thead>
-														<tr style='background-color: #f8f9fa;'>
-															<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-															<th style='text-align: left; padding: 8px;'>Summary</th>
-														</tr>
-													</thead>
-														<tr style='border-bottom: 1px solid #eee;'>
-															<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\res\values\colors.xml'>colors.xml</a></b></td>
-															<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-														</tr>
-														<tr style='border-bottom: 1px solid #eee;'>
-															<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\res\values\strings.xml'>strings.xml</a></b></td>
-															<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-														</tr>
-														<tr style='border-bottom: 1px solid #eee;'>
-															<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/android\app\src\main\res\values\styles.xml'>styles.xml</a></b></td>
-															<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-														</tr>
-													</table>
-												</blockquote>
-											</details>
-										</blockquote>
-									</details>
-								</blockquote>
-							</details>
-						</blockquote>
-					</details>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-	<!-- ios Submodule -->
-	<details>
-		<summary><b>ios</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ ios</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\Podfile'>Podfile</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\Podfile.properties.json'>Podfile.properties.json</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-			<!-- conhecaomundo Submodule -->
-			<details>
-				<summary><b>conhecaomundo</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ ios.conhecaomundo</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\AppDelegate.swift'>AppDelegate.swift</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\conhecaomundo-Bridging-Header.h'>conhecaomundo-Bridging-Header.h</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\Info.plist'>Info.plist</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\SplashScreen.storyboard'>SplashScreen.storyboard</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-					<!-- Images.xcassets Submodule -->
-					<details>
-						<summary><b>Images.xcassets</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ ios.conhecaomundo.Images.xcassets</b></code>
-							<table style='width: 100%; border-collapse: collapse;'>
-							<thead>
-								<tr style='background-color: #f8f9fa;'>
-									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-									<th style='text-align: left; padding: 8px;'>Summary</th>
-								</tr>
-							</thead>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\Images.xcassets\Contents.json'>Contents.json</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-							</table>
-							<!-- AppIcon.appiconset Submodule -->
-							<details>
-								<summary><b>AppIcon.appiconset</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ ios.conhecaomundo.Images.xcassets.AppIcon.appiconset</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\Images.xcassets\AppIcon.appiconset\Contents.json'>Contents.json</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-								</blockquote>
-							</details>
-							<!-- SplashScreenLegacy.imageset Submodule -->
-							<details>
-								<summary><b>SplashScreenLegacy.imageset</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ ios.conhecaomundo.Images.xcassets.SplashScreenLegacy.imageset</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\Images.xcassets\SplashScreenLegacy.imageset\Contents.json'>Contents.json</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-								</blockquote>
-							</details>
-						</blockquote>
-					</details>
-					<!-- Supporting Submodule -->
-					<details>
-						<summary><b>Supporting</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ ios.conhecaomundo.Supporting</b></code>
-							<table style='width: 100%; border-collapse: collapse;'>
-							<thead>
-								<tr style='background-color: #f8f9fa;'>
-									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-									<th style='text-align: left; padding: 8px;'>Summary</th>
-								</tr>
-							</thead>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo\Supporting\Expo.plist'>Expo.plist</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-							</table>
-						</blockquote>
-					</details>
-				</blockquote>
-			</details>
-			<!-- conhecaomundo.xcodeproj Submodule -->
-			<details>
-				<summary><b>conhecaomundo.xcodeproj</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ ios.conhecaomundo.xcodeproj</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo.xcodeproj\project.pbxproj'>project.pbxproj</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-					<!-- xcshareddata Submodule -->
-					<details>
-						<summary><b>xcshareddata</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ ios.conhecaomundo.xcodeproj.xcshareddata</b></code>
-							<!-- xcschemes Submodule -->
-							<details>
-								<summary><b>xcschemes</b></summary>
-								<blockquote>
-									<div class='directory-path' style='padding: 8px 0; color: #666;'>
-										<code><b>⦿ ios.conhecaomundo.xcodeproj.xcshareddata.xcschemes</b></code>
-									<table style='width: 100%; border-collapse: collapse;'>
-									<thead>
-										<tr style='background-color: #f8f9fa;'>
-											<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-											<th style='text-align: left; padding: 8px;'>Summary</th>
-										</tr>
-									</thead>
-										<tr style='border-bottom: 1px solid #eee;'>
-											<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/ios\conhecaomundo.xcodeproj\xcshareddata\xcschemes\conhecaomundo.xcscheme'>conhecaomundo.xcscheme</a></b></td>
-											<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-										</tr>
-									</table>
-								</blockquote>
-							</details>
-						</blockquote>
-					</details>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-	<!-- src Submodule -->
-	<details>
-		<summary><b>src</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ src</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\index.js'>index.js</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-			<!-- components Submodule -->
-			<details>
-				<summary><b>components</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ src.components</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\components\BottomTabs.js'>BottomTabs.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\components\colors.js'>colors.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\components\expoFonts.js'>expoFonts.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\components\ScreenHeader.js'>ScreenHeader.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-				</blockquote>
-			</details>
-			<!-- screens Submodule -->
-			<details>
-				<summary><b>screens</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ src.screens</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\ChangePhotoScreen.js'>ChangePhotoScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\countryScreen.js'>countryScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\favoriteScreen.js'>favoriteScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\homeScreen.js'>homeScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\loginScreen.js'>loginScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\PasswordEditScreen.js'>PasswordEditScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\ProfileEditScreen.js'>ProfileEditScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\profileScreen.js'>profileScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\screens\SignUpScreen.js'>SignUpScreen.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-				</blockquote>
-			</details>
-			<!-- utils Submodule -->
-			<details>
-				<summary><b>utils</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ src.utils</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\utils\countriesService.js'>countriesService.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/guiimanuel/appmobile_conhecaomundo/blob/master/src\utils\favoriteService.js'>favoriteService.js</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-</details>
-
 ---
 
-## Getting Started
+## 🚀 Como Executar
 
-### Prerequisites
+### Pré-requisitos
 
-This project requires the following dependencies:
+Certifique-se de ter instalado:
 
-- **Programming Language:** JavaScript
-- **Package Manager:** Npm, Gradle
-- **Container Runtime:** Podman
+- [Node.js](https://nodejs.org/) >= 18.x
+- [npm](https://www.npmjs.com/) ou yarn
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [Expo Go](https://expo.dev/go) no dispositivo físico **ou** emulador Android/iOS configurado
 
-### Installation
+### Instalação
 
-Build appmobile_conhecaomundo from the source and intsall dependencies:
+```bash
+# 1. Clone o repositório
+git clone https://github.com/guiimanuel/appmobile_conhecaomundo.git
 
-1. **Clone the repository:**
+# 2. Acesse a pasta do projeto
+cd appmobile_conhecaomundo
 
-    ```sh
-    ❯ git clone https://github.com/guiimanuel/appmobile_conhecaomundo
-    ```
-
-2. **Navigate to the project directory:**
-
-    ```sh
-    ❯ cd appmobile_conhecaomundo
-    ```
-
-3. **Install the dependencies:**
-
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![podman][podman-shield]][podman-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [podman-shield]: None -->
-	<!-- [podman-link]: None -->
-
-	**Using [podman](None):**
-
-	```sh
-	❯ echo 'INSERT-INSTALL-COMMAND-HERE'
-	```
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![npm][npm-shield]][npm-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [npm-shield]: https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white -->
-	<!-- [npm-link]: https://www.npmjs.com/ -->
-
-	**Using [npm](https://www.npmjs.com/):**
-
-	```sh
-	❯ npm install
-	```
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![gradle][gradle-shield]][gradle-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [gradle-shield]: None -->
-	<!-- [gradle-link]: None -->
-
-	**Using [gradle](None):**
-
-	```sh
-	❯ echo 'INSERT-INSTALL-COMMAND-HERE'
-	```
-
-### Usage
-
-Run the project with:
-
-**Using [podman](None):**
-```sh
-echo 'INSERT-RUN-COMMAND-HERE'
+# 3. Instale as dependências
+npm install
 ```
-**Using [npm](https://www.npmjs.com/):**
-```sh
+
+### Configuração do Firebase
+
+Antes de rodar o app, configure suas credenciais do Firebase:
+
+1. Crie um projeto em [console.firebase.google.com](https://console.firebase.google.com/)
+2. Ative **Authentication** (Email/Senha) e **Firestore** (ou Realtime Database)
+3. Adicione suas credenciais no arquivo de configuração do Firebase dentro do projeto
+
+### Executando
+
+```bash
+# Iniciar o servidor de desenvolvimento
 npm start
-```
-**Using [gradle](None):**
-```sh
-echo 'INSERT-RUN-COMMAND-HERE'
+
+# Rodar diretamente no Android
+npm run android
+
+# Rodar diretamente no iOS
+npm run ios
+
+# Rodar no navegador (web)
+npm run web
 ```
 
-### Testing
-
-Appmobile_conhecaomundo uses the {__test_framework__} test framework. Run the test suite with:
-
-**Using [podman](None):**
-```sh
-echo 'INSERT-TEST-COMMAND-HERE'
-```
-**Using [npm](https://www.npmjs.com/):**
-```sh
-npm test
-```
-**Using [gradle](None):**
-```sh
-echo 'INSERT-TEST-COMMAND-HERE'
-```
+Escaneie o QR Code exibido no terminal com o app **Expo Go** para visualizar no dispositivo físico.
 
 ---
 
-## Roadmap
+## 📱 Telas
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
-
-## Contributing
-
-- **💬 [Join the Discussions](https://github.com/guiimanuel/appmobile_conhecaomundo/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/guiimanuel/appmobile_conhecaomundo/issues)**: Submit bugs found or log feature requests for the `appmobile_conhecaomundo` project.
-- **💡 [Submit Pull Requests](https://github.com/guiimanuel/appmobile_conhecaomundo/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
-<details closed>
-<summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
-   ```sh
-   git clone https://github.com/guiimanuel/appmobile_conhecaomundo
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to github**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/guiimanuel/appmobile_conhecaomundo/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=guiimanuel/appmobile_conhecaomundo">
-   </a>
-</p>
-</details>
+| Tela | Descrição |
+|------|-----------|
+| **Login** | Autenticação com email e senha via Firebase |
+| **Cadastro** | Criação de nova conta |
+| **Home** | Busca e listagem de países com dados da API |
+| **País** | Detalhes completos: bandeira, capital, população, região |
+| **Favoritos** | Países salvos pelo usuário com persistência local |
+| **Perfil** | Dados da conta com opções de edição |
+| **Editar Perfil** | Alteração de nome e informações pessoais |
+| **Editar Senha** | Troca de senha com validação |
+| **Trocar Foto** | Upload de nova foto de perfil |
 
 ---
 
-## License
+## 🌐 API de Países
 
-Appmobile_conhecaomundo is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+O app consome dados de uma API externa de países (via `countriesService.js` + Axios). Os dados exibidos incluem nome, bandeira, capital, região, sub-região, população e idiomas.
 
 ---
 
-## Acknowledgments
+## 🤝 Contribuindo
 
-- Credit `contributors`, `inspiration`, `references`, etc.
+Contribuições são bem-vindas! Para contribuir:
 
-<div align="right">
+1. Faça um **fork** do repositório
+2. Crie uma branch para sua feature: `git checkout -b feature/minha-feature`
+3. Faça commit das alterações: `git commit -m 'feat: adiciona minha feature'`
+4. Faça push para a branch: `git push origin feature/minha-feature`
+5. Abra um **Pull Request**
 
-[![][back-to-top]](#top)
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **[guiimanuel](https://github.com/guiimanuel)**
+
+---
+
+<div align="center">
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
 
 </div>
-
-
-[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-
-
----
