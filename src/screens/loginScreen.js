@@ -14,9 +14,9 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
-import useAppFonts from "../components/ExpoFonts";
+import useAppFonts from "../components/expoFonts";
 
-function LoginScreen({ navigation }) {
+function loginScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ function LoginScreen({ navigation }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Login successful:", userCredential.user);
-        navigation.navigate("Home");
+        navigation.navigate("home");
       })
       .catch((error) => {
         console.error("Login failed:", error.code, error.message);
@@ -118,7 +118,7 @@ function LoginScreen({ navigation }) {
       <Text style={styles.footerText}>
         Ainda nao tem conta?{" "}
         <Text
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => navigation.navigate("signUp")}
           style={styles.footerLink}
         >
           Cadastre-se
@@ -216,4 +216,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default loginScreen;

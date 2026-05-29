@@ -3,9 +3,9 @@ import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BottomTabs from "../components/BottomTabs";
-import ScreenHeader from "../components/ScreenHeader";
-import useAppFonts from "../components/ExpoFonts";
+import BottomTabs from "../components/bottomTabs";
+import ScreenHeader from "../components/screenHeader";
+import useAppFonts from "../components/expoFonts";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 import favoriteService from "../utils/favoriteService";
@@ -33,7 +33,7 @@ function ProfileScreen({ navigation }) {
         const unsubscribeFavorites = favoriteService.onFavoritesChange(
           (favorites) => {
             setFavoritesCount(favorites.length);
-          }
+          },
         );
 
         return unsubscribeFavorites;
@@ -70,7 +70,7 @@ function ProfileScreen({ navigation }) {
     signOut(auth)
       .then(() => {
         console.log("User signed out successfully");
-        navigation.navigate("Login");
+        navigation.navigate("login");
       })
       .catch((error) => {
         console.error("Error signing out:", error);
@@ -118,13 +118,21 @@ function ProfileScreen({ navigation }) {
         </View>
 
         <View style={styles.menu}>
-          <MenuRow icon="edit" label="Editar Perfil" onPress={() => navigation.navigate("ProfileEdit")} />
+          <MenuRow
+            icon="edit"
+            label="Editar Perfil"
+            onPress={() => navigation.navigate("profileEdit")}
+          />
           <MenuRow
             icon="photo-camera"
             label="Alterar Foto"
-            onPress={() => navigation.navigate("ChangePhoto")}
+            onPress={() => navigation.navigate("changePhoto")}
           />
-          <MenuRow icon="lock" label="Alterar Senha" onPress={() => navigation.navigate("PasswordEdit")} />
+          <MenuRow
+            icon="lock"
+            label="Alterar Senha"
+            onPress={() => navigation.navigate("passwordEdit")}
+          />
         </View>
 
         <TouchableOpacity
@@ -137,7 +145,7 @@ function ProfileScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <BottomTabs active="Profile" navigation={navigation} />
+      <BottomTabs active="profile" navigation={navigation} />
     </View>
   );
 }

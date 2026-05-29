@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-function ScreenHeader({ title, leftIcon = 'menu', rightIcon, onLeftPress, onRightPress }) {
+function screenHeader({ title, leftIcon = 'menu', rightIcon, onLeftPress, onRightPress }) {
   return (
     <View
       style={{
@@ -26,4 +26,4 @@ function ScreenHeader({ title, leftIcon = 'menu', rightIcon, onLeftPress, onRigh
   );
 }
 
-export default ScreenHeader;
+export default screenHeader;

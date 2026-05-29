@@ -2,13 +2,13 @@ import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import ScreenHeader from "../components/ScreenHeader";
-import useAppFonts from "../components/ExpoFonts";
+import screenHeader from "../components/screenHeader";
+import useAppFonts from "../components/expoFonts";
 
 const profileImage =
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80";
 
-function ChangePhotoScreen({ navigation }) {
+function changePhotoScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
 
   if (!fontsLoaded) {
@@ -18,11 +18,11 @@ function ChangePhotoScreen({ navigation }) {
   return (
     <View style={styles.screen}>
       <StatusBar style="light" />
-      <ScreenHeader
-        title="Alterar Foto"
-        leftIcon="arrow-back"
-        onLeftPress={() => navigation.goBack()}
-      />
+      {screenHeader({
+        title: "Alterar Foto",
+        leftIcon: "arrow-back",
+        onLeftPress: () => navigation.goBack()
+      })}
 
       <View style={styles.content}>
         <View style={styles.avatarWrap}>
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChangePhotoScreen;
+export default changePhotoScreen;

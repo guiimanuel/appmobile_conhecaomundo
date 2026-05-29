@@ -18,9 +18,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import useAppFonts from "../components/ExpoFonts";
+import useAppFonts from "../components/expoFonts";
 
-function SignUpScreen({ navigation }) {
+function signUpScreen({ navigation }) {
   const fontsLoaded = useAppFonts();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -47,7 +47,7 @@ function SignUpScreen({ navigation }) {
             );
           });
         alert("Usuario criado com sucesso!");
-        navigation.navigate("Home");
+        navigation.navigate("home");
       })
       .catch((error) => {
         console.error("Sign-up failed:", error.code, error.message);
@@ -189,7 +189,7 @@ function SignUpScreen({ navigation }) {
       <Text style={styles.footerText}>
         Ja tem conta?{" "}
         <Text
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("login")}
           style={styles.footerLink}
         >
           Faca login
@@ -283,4 +283,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default signUpScreen;

@@ -9,18 +9,17 @@ import {
   initializeAuth,
 } from "firebase/auth";
 import { getFirestore, initializeFirestore } from "firebase/firestore";
-import ChangePhotoScreen from "./src/screens/ChangePhotoScreen";
-import CountryScreen from "./src/screens/CountryScreen";
-import FavoriteScreen from "./src/screens/FavoriteScreen";
-import HomeScreen from "./src/screens/HomeScreen";
-import LoginScreen from "./src/screens/LoginScreen";
-import ProfileScreen from "./src/screens/ProfileScreen";
-import SignUpScreen from "./src/screens/SignUpScreen";
-import ProfileEditScreen from "./src/screens/ProfileEditScreen";
-import PasswordEditScreen from "./src/screens/PasswordEditScreen";
+import changePhotoScreen from "./src/screens/changePhotoScreen";
+import countryScreen from "./src/screens/countryScreen";
+import favoriteScreen from "./src/screens/favoriteScreen";
+import homeScreen from "./src/screens/homeScreen";
+import loginScreen from "./src/screens/loginScreen";
+import profileScreen from "./src/screens/profileScreen";
+import signUpScreen from "./src/screens/signUpScreen";
+import profileEditScreen from "./src/screens/profileEditScreen";
+import passwordEditScreen from "./src/screens/passwordEditScreen";
 
 const Stack = createNativeStackNavigator();
-
 const firebaseConfig = {
   apiKey: "AIzaSyB3An3l78MG0i3HoXGnukMFiniIlIBBM6g",
   authDomain: "conhecaomundo-d50be.firebaseapp.com",
@@ -30,9 +29,7 @@ const firebaseConfig = {
   appId: "1:609596898124:web:8e84412e9c37ed9ca8ede9",
   measurementId: "G-D56503L8T0",
 };
-
 const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
-
 try {
   initializeFirestore(firebaseApp, {
     experimentalForceLongPolling: true,
@@ -62,50 +59,50 @@ if (Platform.OS === "web" || !getReactNativePersistence) {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen
-          name="Login"
-          component={LoginScreen}
+          name="login"
+          component={loginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="SignUp"
-          component={SignUpScreen}
+          name="signUp"
+          component={signUpScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="home"
+          component={homeScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Country"
-          component={CountryScreen}
+          name="country"
+          component={countryScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Favorite"
-          component={FavoriteScreen}
+          name="favorite"
+          component={favoriteScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
+          name="profile"
+          component={profileScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="ChangePhoto"
-          component={ChangePhotoScreen}
+          name="changePhoto"
+          component={changePhotoScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="ProfileEdit"
-          component={ProfileEditScreen}
+          name="profileEdit"
+          component={profileEditScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="PasswordEdit"
-          component={PasswordEditScreen}
+          name="passwordEdit"
+          component={passwordEditScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
